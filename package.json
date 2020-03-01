@@ -1,6 +1,6 @@
 {
   "name": "x-image-classifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Classifying objects with TensorFlow.js.",
   "main": "dist/XImageClassifier.js",
   "module": "dist/XImageClassifier.js",

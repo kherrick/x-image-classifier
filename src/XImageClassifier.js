@@ -379,6 +379,8 @@ export class XImageClassifier extends LitElement {
         this.model = mobilenet
 
         this.isReadyToPredict = true
+        this.dispatchEvent(events.XImageClassifierReadyToPredict(true))
+
         this._handleImageUrlPrediction(this._canvasElement, this.imgUrl)
       })
     })

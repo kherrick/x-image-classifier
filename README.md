@@ -2,12 +2,12 @@
 
 ## About
 
-Classifying objects with TensorFlow.js.
+Classifying images with TensorFlow.js.
 
 ## Installation
 
 ```bash
-npm i git+https://github.com/kherrick/x-image-classifier.git#semver:^1.0.1
+npm i git+https://github.com/kherrick/x-image-classifier.git#semver:^1.1.0
 ```
 
 ## Usage

@@ -8,8 +8,8 @@ export const X_IMAGE_CLASSIFIER_IMAGE_LOADED = 'x-image-classifier-image-loaded'
 export const X_IMAGE_CLASSIFIER_VIDEO_LOADING = 'x-image-classifier-video-loading'
 export const X_IMAGE_CLASSIFIER_VIDEO_LOADED = 'x-image-classifier-video-loaded'
 export const X_IMAGE_CLASSIFIER_VIDEO_LOADING_FAILURE = 'x-image-classifier-video-loading-failure'
-export const X_IMAGE_CLASSIFIER_OBJECT_CLASSIFIED = 'x-image-classifier-object-classified'
-export const X_IMAGE_CLASSIFIER_NO_OBJECT_CLASSIFIED = 'x-image-classifier-no-object-classified'
+export const X_IMAGE_CLASSIFIER_IMAGE_CLASSIFIED = 'x-image-classifier-image-classified'
+export const X_IMAGE_CLASSIFIER_NO_IMAGE_CLASSIFIED = 'x-image-classifier-no-image-classified'
 export const X_IMAGE_CLASSIFIER_READY_TO_PREDICT = 'x-image-classifier-ready-to-predict'
 
 export const XImageClassifierImageDragEnter = val =>
@@ -82,15 +82,15 @@ export const XImageClassifierVideoLoadingFailure = val =>
     detail: val
   })
 
-export const XImageClassifierObjectDetected = val =>
-  new CustomEvent(X_IMAGE_CLASSIFIER_OBJECT_CLASSIFIED, {
+export const XImageClassifierImageDetected = val =>
+  new CustomEvent(X_IMAGE_CLASSIFIER_IMAGE_CLASSIFIED, {
     bubbles: true,
     composed: true,
     detail: val
   })
 
-export const XImageClassifierNoObjectDetected = val =>
-  new CustomEvent(X_IMAGE_CLASSIFIER_NO_OBJECT_CLASSIFIED, {
+export const XImageClassifierNoImageDetected = val =>
+  new CustomEvent(X_IMAGE_CLASSIFIER_NO_IMAGE_CLASSIFIED, {
     bubbles: true,
     composed: true,
     detail: val

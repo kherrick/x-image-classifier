@@ -82,14 +82,14 @@ export const XImageClassifierVideoLoadingFailure = val =>
     detail: val
   })
 
-export const XImageClassifierImageDetected = val =>
+export const XImageClassifierImageClassified = val =>
   new CustomEvent(X_IMAGE_CLASSIFIER_IMAGE_CLASSIFIED, {
     bubbles: true,
     composed: true,
     detail: val
   })
 
-export const XImageClassifierNoImageDetected = val =>
+export const XImageClassifierNoImageClassified = val =>
   new CustomEvent(X_IMAGE_CLASSIFIER_NO_IMAGE_CLASSIFIED, {
     bubbles: true,
     composed: true,

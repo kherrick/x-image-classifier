@@ -24,6 +24,12 @@ export class XImageClassifier extends LitElement {
   strokeStyle = 'yellow'
   @property({ type: Number, reflect: true })
   lineWidth = 10
+  @property({ type: Number, reflect: true })
+  alpha = 1
+  @property({ type: Number, reflect: true })
+  version = 1
+  @property({ type: Number, reflect: true })
+  topk = 1
   @property({ type: String, reflect: false })
   wasmPath = WASM_PATH
   @property({ type: Boolean, reflect: false })
@@ -72,23 +78,21 @@ export class XImageClassifier extends LitElement {
 
   _getPrediction(ctx, image) {
     // Pass in an image or video to the model
-    const returnTensors = true // Pass in `true` to get tensors back, rather than values.
-
-    return this.model.classify(image, returnTensors).then(predictions => {
+    return this.model.classify(image, this.topk).then(predictions => {
 
       if (predictions.length > 0) {
         for (let i = 0; i < predictions.length; i++) {
           const { className, probability } = predictions[i]
 
-          logger([ `Object classified: ${className} | probability: ${probability}`])
-          this.dispatchEvent(events.XImageClassifierObjectDetected(predictions[i]))
+          logger([ `Image classified: ${className} | probability: ${probability}`])
+          this.dispatchEvent(events.XImageClassifierImageClassified(predictions[i]))
         }
 
         return [ ctx, image ]
       }
 
-      logger('No Object classified')
-      this.dispatchEvent(events.XImageClassifierNoObjectDetected())
+      logger('No image classified')
+      this.dispatchEvent(events.XImageClassifierNoImageClassified())
 
       return [ ctx, image ]
     })
@@ -374,7 +378,10 @@ export class XImageClassifier extends LitElement {
     tf.setBackend('wasm').then(() => {
       return new Promise((res, rej) => {
         // Load the model.
-        res(mobilenet.load())
+        res(mobilenet.load({
+          version: this.version,
+          alpha: this.alpha
+        }))
       }).then(mobilenet => {
         this.model = mobilenet
 
